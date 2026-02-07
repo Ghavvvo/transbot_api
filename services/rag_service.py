@@ -200,24 +200,32 @@ INSTRUCCIONES CRÍTICAS:
 5. DEBES seguir EXACTAMENTE el formato mostrado en los ejemplos
 6. NO agregues texto adicional, explicaciones o comentarios
 7. SIEMPRE incluye la línea RESPUESTA_CORRECTA: después de cada pregunta
+8. NO USES CORCHETES [] en ninguna parte del texto
+9. Escribe las opciones en texto plano normal, sin símbolos especiales
+10. Las opciones deben ser frases naturales y directas
+11. CADA OPCIÓN DE RESPUESTA DEBE TENER UN MÁXIMO DE 11 PALABRAS - sé conciso y directo
 
 FORMATO OBLIGATORIO (copia este formato exactamente):
-1-[PREGUNTA]
-1-[OPCIÓN 1]
-2-[OPCIÓN 2]  
-3-[OPCIÓN 3]
+1-¿Cuál es la pregunta sobre el artículo?
+1-Primera opción de respuesta (máximo 11 palabras).
+2-Segunda opción de respuesta (máximo 11 palabras).
+3-Tercera opción de respuesta (máximo 11 palabras).
 RESPUESTA_CORRECTA:1
 
-2-[PREGUNTA]
-1-[OPCIÓN 1]
-2-[OPCIÓN 2]
-3-[OPCIÓN 3]
-RESPUESTA_CORRECTA:2
-
-EJEMPLOS DE REFERENCIA (usa este estilo exacto):
+EJEMPLOS DE REFERENCIA:
 {example_context}
 
-IMPORTANTE: Responde ÚNICAMENTE con las preguntas en el formato mostrado, sin texto adicional. Usa el estilo y formato de los ejemplos proporcionados."""
+REGLAS DE FORMATO ESTRICTAS:
+- Pregunta: Debe empezar con número-signo de interrogación y terminar con signo de interrogación
+- Opciones: Deben ser texto directo sin corchetes ni comillas
+- Opciones: MÁXIMO 11 palabras cada una - mantén las respuestas breves y precisas
+- NO escribas [texto], escribe directamente: texto
+- Ejemplo CORRECTO: "1-A menos de 10 metros."
+- Ejemplo INCORRECTO: "1-[A menos de 10 metros.]"
+- Ejemplo CORRECTO (longitud): "1-Mantener 5 metros por cada 15 km/hora."
+- Ejemplo INCORRECTO (longitud): "1-Se debe mantener una distancia de 5 metros por cada 15 kilómetros por hora de velocidad."
+
+IMPORTANTE: Responde ÚNICAMENTE con las preguntas en el formato mostrado, sin texto adicional. Usa el estilo y formato de los ejemplos proporcionados. Recuerda: máximo 11 palabras por opción."""
 
             questions = []
 
@@ -295,6 +303,8 @@ Genera la pregunta número {i} siguiendo exactamente el formato mostrado en los 
                 # Buscar opciones (1-, 2-, 3-)
                 elif line.startswith(('1-', '2-', '3-')) and len(options) < 3:
                     option_text = line[2:].strip()
+                    # Limpiar corchetes y comillas si existen
+                    option_text = option_text.strip('[]"\'')
                     if option_text:
                         options.append(option_text)
 
