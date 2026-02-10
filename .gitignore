@@ -12,9 +12,12 @@ ENV/
 env/
 .venv
 
-# Base de datos
+# Base de datos ChromaDB (ya no se usa)
 chroma_db/
 *.sqlite3
+
+# Embeddings precomputados (INCLUIR en Git)
+# precomputed_embeddings/ <- NO ignorar, estos van en Git
 
 # IDE
 .vscode/
@@ -28,4 +31,3 @@ Thumbs.db
 
 # Logs
 *.log
-

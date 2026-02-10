@@ -3,7 +3,7 @@ from flask_cors import CORS
 import os
 import asyncio
 from dotenv import load_dotenv
-from services.embedding_service import EmbeddingService
+from services.precomputed_embedding_service import PrecomputedEmbeddingService
 from services.rag_service import RAGService
 
 # Cargar variables de entorno desde .env
@@ -77,13 +77,13 @@ def initialize_services():
     if embedding_service is None:
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            chroma_db_dir = os.path.join(current_dir, "chroma_db")
+            precomputed_dir = os.path.join(current_dir, "precomputed_embeddings")
 
-            embedding_service = EmbeddingService(
-                model_name="paraphrase-multilingual-MiniLM-L12-v2",
-                persist_directory=chroma_db_dir
+            # Usar servicio de embeddings precomputados
+            embedding_service = PrecomputedEmbeddingService(
+                precomputed_dir=precomputed_dir
             )
-            print("✅ Servicio de embeddings inicializado")
+            print("✅ Servicio de embeddings precomputados inicializado")
 
             # Inicializar RAG Service
             rag_service = RAGService(MISTRAL_API_KEY, embedding_service)
