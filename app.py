@@ -22,6 +22,9 @@ MISTRAL_API_KEY = os.getenv('MISTRAL_API_KEY')
 if not MISTRAL_API_KEY:
     print("⚠️  ADVERTENCIA: MISTRAL_API_KEY no está configurada en las variables de entorno")
     print("   Por favor, crea un archivo .env con tu API key o configura la variable de entorno")
+else:
+    # No imprimir la key completa, solo confirmar que existe
+    print(f"✅ MISTRAL_API_KEY configurada (longitud: {len(MISTRAL_API_KEY)} caracteres)")
 
 @app.route('/api/generate-test', methods=['POST'])
 def generate_traffic_test():

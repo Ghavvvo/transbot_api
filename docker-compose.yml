@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: transbot-api
+    ports:
+      - "5000:5000"
+    environment:
+      # IMPORTANTE: Configura estas variables en un archivo .env
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - FLASK_ENV=${FLASK_ENV:-production}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-paraphrase-multilingual-MiniLM-L12-v2}
+      - PORT=5000
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Opcional: límites de recursos
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G

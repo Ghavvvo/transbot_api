@@ -6,20 +6,19 @@ import os
 from typing import Dict, Any, List, Optional
 import logging
 from mistralai import Mistral
-from .embedding_service import EmbeddingService
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class RAGService:
-    def __init__(self, mistral_api_key: str, embedding_service: EmbeddingService):
+    def __init__(self, mistral_api_key: str, embedding_service):
         """
         Inicializa el servicio RAG con Mistral AI
 
         Args:
             mistral_api_key: API key de Mistral AI
-            embedding_service: Servicio de embeddings ya inicializado
+            embedding_service: Servicio de embeddings ya inicializado (PrecomputedEmbeddingService)
         """
         self.mistral_client = Mistral(api_key=mistral_api_key)
         self.embedding_service = embedding_service

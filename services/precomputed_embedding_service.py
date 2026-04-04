@@ -1,6 +1,5 @@
 """
 Servicio de embeddings LIGERO que usa embeddings precomputados
-No requiere ChromaDB ni persistencia - todo está en archivos estáticos
 """
 
 import json
@@ -17,15 +16,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class PrecomputedEmbeddingService:
-    def __init__(self, precomputed_dir: str = "./precomputed_embeddings"):
+    def __init__(self, precomputed_dir: str = "./precomputed_embeddings", model_name: str = None):
         """
         Inicializa el servicio usando embeddings precomputados
 
         Args:
             precomputed_dir: Directorio con los embeddings precomputados
+            model_name: Nombre del modelo de embeddings (opcional, usa env o default)
         """
         self.precomputed_dir = precomputed_dir
-        self.model_name = "paraphrase-multilingual-MiniLM-L12-v2"
+        # Usar modelo desde env, parámetro, o default
+        self.model_name = model_name or os.getenv('EMBEDDING_MODEL', 'paraphrase-multilingual-MiniLM-L12-v2')
         self.model = None
         self.embeddings = None
         self.articles = None

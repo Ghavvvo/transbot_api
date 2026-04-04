@@ -9,9 +9,11 @@ services:
         sync: false  # Configurar manualmente en Render Dashboard
       - key: FLASK_ENV
         value: production
+      - key: EMBEDDING_MODEL
+        value: paraphrase-multilingual-MiniLM-L12-v2
       - key: PYTHON_VERSION
         value: 3.12.0
 
-    # Ya no necesitas disco persistente - los embeddings están en Git!
-    plan: free  # Funciona perfecto en plan gratuito
+    # Los embeddings están en Git - no necesitas disco persistente
+    plan: free  # Funciona en plan gratuito
 

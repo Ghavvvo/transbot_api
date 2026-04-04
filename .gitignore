@@ -1,5 +1,8 @@
-# Variables de entorno
+# Variables de entorno - NUNCA subir a Git
 .env
+.env.*
+!.env.example
+!.env.docker
 
 # Python
 __pycache__/
@@ -16,8 +19,8 @@ env/
 chroma_db/
 *.sqlite3
 
-# Embeddings precomputados (INCLUIR en Git)
-# precomputed_embeddings/ <- NO ignorar, estos van en Git
+# Embeddings precomputados - estos SÍ van en Git
+# precomputed_embeddings/
 
 # IDE
 .vscode/
@@ -31,3 +34,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Docker
+.dockerignore

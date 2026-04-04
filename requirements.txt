@@ -1,7 +1,6 @@
 Flask==3.0.0
 Flask-CORS==4.0.0
 sentence-transformers==2.7.0
-chromadb==0.4.24
 numpy==1.26.4
 mistralai==1.9.11
 python-dotenv==1.0.0

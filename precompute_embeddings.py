@@ -31,8 +31,8 @@ def precompute_embeddings():
 
     print(f"📖 {len(articles)} artículos cargados")
 
-    # Inicializar modelo
-    model_name = "paraphrase-multilingual-MiniLM-L12-v2"
+    # Inicializar modelo desde variable de entorno o default
+    model_name = os.getenv('EMBEDDING_MODEL', 'paraphrase-multilingual-MiniLM-L12-v2')
     print(f"🔧 Cargando modelo: {model_name}")
     model = SentenceTransformer(model_name)
 
