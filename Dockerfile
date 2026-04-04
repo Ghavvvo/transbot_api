@@ -10,7 +10,10 @@ ENV FLASK_ENV=production \
     PYTHONUNBUFFERED=1 \
     PORT=5000
 
+# Instalar dependencias de sistema necesarias para compilar paquetes
 
+# Actualizar pip, setuptools y wheel
+RUN pip install --upgrade pip setuptools wheel
 
 # Copiar archivos de requisitos
 COPY requirements.txt .
