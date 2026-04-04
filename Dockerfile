@@ -10,10 +10,7 @@ ENV FLASK_ENV=production \
     PYTHONUNBUFFERED=1 \
     PORT=5000
 
-# Instalar dependencias del sistema necesarias para SentenceTransformers
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+
 
 # Copiar archivos de requisitos
 COPY requirements.txt .
