@@ -1,0 +1,10 @@
+{
+  "model_name": "paraphrase-multilingual-MiniLM-L12-v2",
+  "total_articles": 324,
+  "embedding_dimension": 384,
+  "embeddings_shape": [
+    324,
+    384
+  ],
+  "file_size_mb": 0.47
+}
