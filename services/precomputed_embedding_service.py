@@ -70,7 +70,7 @@ class PrecomputedEmbeddingService:
         """Inicializa el modelo solo para queries nuevas"""
         try:
             logger.info(f"Cargando modelo para queries: {self.model_name}")
-            self.model = SentenceTransformer(self.model_name)
+            self.model = SentenceTransformer(self.model_name, device='cpu')
             logger.info("✅ Modelo cargado")
         except Exception as e:
             logger.error(f"Error al cargar el modelo: {e}")

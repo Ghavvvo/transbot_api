@@ -32,4 +32,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:${PORT}/api/health')"
 
 # Comando para ejecutar la aplicación
-CMD gunicorn --bind 0.0.0.0:${PORT} --workers 2 --timeout 120 app:app
+CMD gunicorn --bind 0.0.0.0:${PORT} --workers 1 --threads=1 --timeout 120 app:app
