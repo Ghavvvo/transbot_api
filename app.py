@@ -10,7 +10,7 @@ from services.rag_service import RAGService
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://ghavvvo.github.io"])
 
 # Inicializar servicios
 embedding_service = None
